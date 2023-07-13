@@ -1,9 +1,3 @@
-import logo from "./logo.svg";
-import App from "./App.css";
-import React from "react";
-import Header from "../src/Components/Header";
-import Body from "./Components/Body";
-
 const resList = [
   {
     type: "restaurant",
@@ -1586,45 +1580,4 @@ const resList = [
   },
 ];
 
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-left">
-          <h3>Contact Us</h3>
-          <p>123 Main Street</p>
-          <p>City, State, Zip</p>
-          <p>Phone: (123) 456-7890</p>
-          <p>Email: info@foodordering.com</p>
-        </div>
-        <div className="footer-right">
-          <ul className="footer-menu">
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Contact Us</li>
-            <li>Cart</li>
-          </ul>
-        </div>
-      </div>
-      <div className="footer-bottom">
-        <p>
-          &copy; {new Date().getFullYear()} Food Ordering Website. All rights
-          reserved.
-        </p>
-      </div>
-    </footer>
-  );
-};
-
-const AppLayout = () => {
-  return (
-    <div className="App">
-      {/* Header */}
-      <Header />
-      <Body />
-      <Footer />
-    </div>
-  );
-};
-
-export default AppLayout;
+export default resList;
