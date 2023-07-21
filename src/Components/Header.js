@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LOGO_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [btnName, setBtnName] = useState("Login");
+
+  const onlineStatus = useOnlineStatus();
+
+  //useEffect(callback Fun, dependecy Array)
+  useEffect(() => {
+    console.log("useEffect called");
+  }, [btnName]);
 
   const handleLoginClick = () => {
     if (isLoggedIn) {
@@ -32,9 +41,19 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
+          <li>Online Status: {onlineStatus ? "✅" : "🔴"}</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
+          </li>
           <li>Cart</li>
           <button className="login-button" onClick={handleLoginClick}>
             {btnName}

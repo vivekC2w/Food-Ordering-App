@@ -1,16 +1,15 @@
-import logo from "./logo.svg";
-import App from "./App.css";
-import React from "react";
+import "./logo.svg";
+import "./App.css";
 import Header from "../src/Components/Header";
-import Body from "./Components/Body";
 import Footer from "./Components/Footer";
+import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
     <div className="App">
-      {/* Header */}
+      {/* if path = / */}
       <Header />
-      <Body />
+      <Outlet />
       <Footer />
     </div>
   );
