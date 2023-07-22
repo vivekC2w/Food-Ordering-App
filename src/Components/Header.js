@@ -35,27 +35,30 @@ const Header = () => {
   };
 
   return (
-    <div className="header">
+    <div className="flex justify-between bg-gray-100 shadow-lg m-2">
       <div className="logo-container">
-        <img className="logo" alt="app-logo" src={LOGO_URL} />
+        <img className="w-28" alt="app-logo" src={LOGO_URL} />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status: {onlineStatus ? "✅" : "🔴"}</li>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="px-4">Online Status: {onlineStatus ? "✅" : "🔴"}</li>
+          <li className="px-4">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/about">About Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
-          <button className="login-button" onClick={handleLoginClick}>
+          <li className="px-4">Cart</li>
+          <button
+            className="px-4 bg-green-400 rounded-lg"
+            onClick={handleLoginClick}
+          >
             {btnName}
           </button>
         </ul>
@@ -88,34 +91,46 @@ const Login = ({ onClose, onLogin }) => {
   };
 
   return (
-    <div className="login-modal">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email: </label>
+    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 md:p-8 rounded-md shadow-md w-80 md:w-96 max-w-90% z-50">
+      <h2 className="text-lg font-bold mt-0">Login</h2>
+      <form onSubmit={handleSubmit} className="flex flex-col">
+        <div className="mb-4">
+          <label htmlFor="email" className="font-bold">
+            Email:
+          </label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={handleEmailChange}
+            className="p-2 border rounded-md border-gray-300"
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password: </label>
+        <div className="mb-4">
+          <label htmlFor="password" className="font-bold">
+            Password:
+          </label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={handlePasswordChange}
+            className="p-2 border rounded-md border-gray-300"
             required
           />
         </div>
-        <button type="submit" className="login-submit">
+        <button
+          type="submit"
+          className="bg-red-500 text-white border-none py-2 px-4 rounded-md cursor-pointer"
+        >
           Login
         </button>
       </form>
-      <button className="close-button" onClick={onClose}>
+      <button
+        className="bg-red-600 text-white border-none py-2 px-4 rounded-md cursor-pointer mt-4"
+        onClick={onClose}
+      >
         Close
       </button>
     </div>

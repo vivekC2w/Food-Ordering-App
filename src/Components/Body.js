@@ -48,18 +48,19 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="flex">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-box"
-            placeholder="Search for restaurants and food"
+            className="border border-solid border-black rounded-sm"
+            placeholder="Search for restaurants"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
+            className="px-4 py-2 bg-lime-200 m-4 rounded-lg"
             onClick={() => {
               //Filter the restaurant cards and update the UI
               //SearchText
@@ -73,22 +74,24 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            //Filter Logic
-            const filteredList = listOfRestaurants.filter(
-              (res) => res.data.avgRating > 4
-            );
-            //setListOfRestaurant
-            setListOfRestaurants(filteredList);
-            // console.log(listOfRestaurants);
-          }}
-        >
-          Top Rated Restaurant
-        </button>
+        <div className="search m-4 p-4 flex items-center">
+          <button
+            className="px-4 py-2 bg-lime-200 m-4 rounded-lg"
+            onClick={() => {
+              //Filter Logic
+              const filteredList = listOfRestaurants.filter(
+                (res) => res.data.avgRating > 4
+              );
+              //setListOfRestaurant
+              setListOfRestaurants(filteredList);
+              // console.log(listOfRestaurants);
+            }}
+          >
+            Top Rated Restaurant
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap gap-10">
         {/* RestaurantCard */}
         {filteredRestaurants &&
           filteredRestaurants.map((restaurant) => (

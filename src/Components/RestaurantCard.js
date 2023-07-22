@@ -1,27 +1,37 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { CDN_URL } from "../utils/constants";
+import { useState } from "react";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
+  const [expanded, setExpanded] = useState(false);
 
   const { cloudinaryImageId, name, cuisines, avgRating, deliveryTime } =
     resData?.data;
   return (
-    <div className="res-card">
+    <div className="bg-gray-100 m-4 p-4 w-[250px] rounded-t-lg transition-transform duration-300 ease hover:transform translate-y-[-5px] hover:shadow-md hover:bg-gray-200">
       <img
-        className="res-logo"
+        className="w-full h-200 object-cover rounded-t-lg"
         alt="res-logo"
         src={CDN_URL + cloudinaryImageId}
       />
-      <div className="res-card-content">
-        <h3 className="res-card-title">{name}</h3>
-        <h5 className="res-card-description">{cuisines.join(", ")}</h5>
-        <div className="res-card-rating">
-          <FontAwesomeIcon icon={faStar} />
+      <div className="p-2">
+        <h3 className="text-20 font-bold text-gray-700 mb-4">{name}</h3>
+        <h5
+          className={`text-14 text-gray-700 ${
+            expanded ? "line-clamp-none" : "line-clamp-2"
+          }`}
+        >
+          {cuisines.join(", ")}
+        </h5>
+        <div className="flex items-center text-yellow-400">
+          <FontAwesomeIcon icon={faStar} className="mr-4" />
           {avgRating}
         </div>
-        <h5 className="res-card-delivery-time">{deliveryTime} Minutes</h5>
+        <h5 className="text-10 font-bold text-gray-700">
+          {deliveryTime} Minutes
+        </h5>
       </div>
     </div>
   );
