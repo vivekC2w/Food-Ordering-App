@@ -8,6 +8,7 @@ import Error from "./Components/Error";
 import Body from "./Components/Body";
 import RestaurantMenu from "./Components/RestaurantMenu";
 import Contact from "./Components/Contact";
+import Cart from "./Components/Cart";
 // import Grocery from "./Components/Grocery";
 
 //Chunking
@@ -46,6 +47,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
