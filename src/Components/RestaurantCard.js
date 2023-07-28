@@ -8,7 +8,7 @@ const RestaurantCard = (props) => {
   const [expanded, setExpanded] = useState(false);
 
   const { cloudinaryImageId, name, cuisines, avgRating, deliveryTime } =
-    resData?.data;
+    resData;
   return (
     <div className="bg-gray-100 m-4 p-4 w-[250px] rounded-t-lg transition-transform duration-300 ease hover:transform translate-y-[-5px] hover:shadow-md hover:bg-gray-200">
       <img

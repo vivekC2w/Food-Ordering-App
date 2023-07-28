@@ -28,8 +28,12 @@ const Body = () => {
 
     const json = await data.json();
     //optional chaining
-    setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setListOfRestaurants(
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurants(
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   const onlineStatus = useOnlineStatus();
@@ -42,7 +46,7 @@ const Body = () => {
     );
 
   // const { loggedInUser, setUserName } = useContext(UserContext);
-
+  console.log(listOfRestaurants);
   //Conditional Rendering
   return listOfRestaurants && listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -66,7 +70,7 @@ const Body = () => {
               //SearchText
               console.log(searchText);
               const filteredRestaurant = listOfRestaurants.filter((res) =>
-                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               setFilteredRestaurants(filteredRestaurant);
             }}
@@ -80,9 +84,8 @@ const Body = () => {
             onClick={() => {
               //Filter Logic
               const filteredList = listOfRestaurants.filter(
-                (res) => res.data.avgRating > 4
+                (res) => res.info.avgRating > 4
               );
-              //setListOfRestaurant
               setListOfRestaurants(filteredList);
               // console.log(filteredList);
             }}
@@ -90,30 +93,21 @@ const Body = () => {
             Top Rated Restaurant
           </button>
         </div>
-        {/* <div className="search m-4 p-4 flex items-center">
-          <input
-            type="text"
-            className="border border-solid border-black rounded-sm p-1"
-            placeholder="Username"
-            value={loggedInUser}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-        </div> */}
       </div>
       <div className="flex flex-wrap gap-10">
         {/* RestaurantCard */}
         {filteredRestaurants &&
           filteredRestaurants.map((restaurant) => (
             <Link
-              key={restaurant.data.id}
-              to={"/restaurants/" + restaurant.data.id}
+              key={restaurant?.info.id}
+              to={"/restaurants/" + restaurant?.info.id}
             >
               {
                 /* If the restaurant is promoted then add a promoted label to it */
-                restaurant.data.promoted ? (
-                  <RestaurantCardPromoted resData={restaurant} />
+                restaurant?.info.promoted ? (
+                  <RestaurantCardPromoted resData={restaurant?.info} />
                 ) : (
-                  <RestaurantCard resData={restaurant} />
+                  <RestaurantCard resData={restaurant?.info} />
                 )
               }
             </Link>
