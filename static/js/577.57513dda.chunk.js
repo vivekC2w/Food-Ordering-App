@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkflavordash=self.webpackChunkflavordash||[]).push([[577],{577:function(r,e,n){n.r(e);var s=n(184);e.default=function(){return(0,s.jsx)("h1",{children:"Our grocery online store"})}}}]);
-//# sourceMappingURL=577.57513dda.chunk.js.map
