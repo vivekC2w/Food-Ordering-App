@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Contact = () => {

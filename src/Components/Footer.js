@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-4">

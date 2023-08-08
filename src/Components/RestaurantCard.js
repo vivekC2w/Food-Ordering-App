@@ -6,9 +6,11 @@ import { useState } from "react";
 const RestaurantCard = (props) => {
   const { resData } = props;
   const [expanded, setExpanded] = useState(false);
+  // console.log(props);
 
-  const { cloudinaryImageId, name, cuisines, avgRating, deliveryTime } =
-    resData;
+  const { cloudinaryImageId, name, cuisines, avgRating } = resData;
+
+  const { deliveryTime } = resData.sla;
   return (
     <div className="bg-gray-100 m-4 p-4 w-[250px] rounded-t-lg transition-transform duration-300 ease hover:transform translate-y-[-5px] hover:shadow-md hover:bg-gray-200">
       <img
