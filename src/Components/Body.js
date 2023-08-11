@@ -29,10 +29,10 @@ const Body = () => {
     const json = await data.json();
     //optional chaining
     setListOfRestaurants(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurants(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -46,7 +46,7 @@ const Body = () => {
     );
 
   // const { loggedInUser, setUserName } = useContext(UserContext);
-  console.log(listOfRestaurants);
+  // console.log(listOfRestaurants);
   //Conditional Rendering
   return listOfRestaurants && listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -86,7 +86,7 @@ const Body = () => {
               const filteredList = listOfRestaurants.filter(
                 (res) => res.info.avgRating > 4
               );
-              setListOfRestaurants(filteredList);
+              setFilteredRestaurants(filteredList);
               // console.log(filteredList);
             }}
           >
